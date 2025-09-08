@@ -5,12 +5,12 @@ function ex1() {
     */
     var cars = ["Saab", "Volvo", "BMW"];
     var newcars = cars;
-    var person = {firstName: "Yournal", lastName: "Drunk", age: 50};
+    var person = { firstName: "Yournal", lastName: "Drunk", age: 50 };
     var newperson = person;
     person.firstName = "Jun";
     cars[0] = "what";
-    
-    return "" // e.g., "YournalSaab"
+
+    return `Junwhat`; // e.g., "YournalSaab"
 
 }
 
@@ -33,7 +33,7 @@ function ex2() {
 
     */
 
-    return "" // e.g., the result of the first two expressions is "534NaN"
+    return "534NaN152-1truefalsetruefalse"; // e.g., the result of the first two expressions is "534NaN"
 
 }
 
@@ -45,7 +45,11 @@ function ex3(firstNumber, secondNumber) {
             - else return the string "NaN"
 
     */
-      
+    if(typeof firstNumber === 'number' && typeof secondNumber === 'number') {
+        return firstNumber + secondNumber;
+    }
+    return 'NaN';
+
 }
 
 function ex4(persons) {
@@ -69,8 +73,8 @@ function ex4(persons) {
         (in this example, the function return 44)
     */
 
-    return ""
-   
+    return persons.sort((a, b) => a.age > b.age).find(({ name }) => name === 'The Chosen One').age;
+
 }
 
 function ex5(str) {
@@ -84,7 +88,17 @@ function ex5(str) {
 
     */
 
-    return ""
+    str = str.replaceAll(' ', '').toLowerCase();
+    let i = 0, j = str.length - 1;
+    while(i < j) {
+        if(str[i] !== str[j]) {
+            return false;
+        }
+        i++;
+        j--;
+    }
+
+    return true;
 
 }
 
@@ -106,24 +120,25 @@ function computeAverageScore(students) {
         (in this example, the function return 60)
 
     */
-    let result = 0
-   
+    let result = students.reduce((acum, { score }) => score + acum, 0);
 
-    return result
+    return result / students.length;
 }
 
 function checkStatus(student) {
-/*
-    Complete checkStatus function so that it
-        - check the score of a given student
-        - return "Pass" if the score is >= 50; otherwise "Fail"
+    /*
+        Complete checkStatus function so that it
+            - check the score of a given student
+            - return "Pass" if the score is >= 50; otherwise "Fail"
+    
+        // data structure of a student (example)
+            const student = { name: "Alice", score: 65 }
+              
+            (in this example, the function return 'Pass')
+    */
+    const { score } = student;
+    return score >= 50 ? 'Pass' : 'Fail';
 
-    // data structure of a student (example)
-        const student = { name: "Alice", score: 65 }
-          
-        (in this example, the function return 'Pass')
-*/
-   
 }
 
 module.exports = { ex1, ex2, ex3, ex4, ex5, computeAverageScore, checkStatus }
